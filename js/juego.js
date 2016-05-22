@@ -5,6 +5,8 @@ var sky;
 var cursors;
 var count = 0;
 var asteroid;
+
+game.state.add('fin',winState);
 // Precarga los archivos
 function preload() {
     saveWorld.load.image('stars', 'archivos/space-2.jpg');
@@ -61,20 +63,17 @@ function create() {
     // Se inicializa cursors como una entrada de teclado
     cursors = saveWorld.input.keyboard.createCursorKeys();
 
+    if(count == 10){
+        saveWorld.state.start('fin');
+    }
 }
 
-//var proof;
+
 // Esta funcion es llamada por ship y esto le permite golpear al asteroide
-// Se resta -0.05 para debilitarlo
 function hitasteroid(body1, body2) {
-    //body2.sprite.alpha -= 0.9;
-    // Si el asteroide es golpeado suma el contador.
-    //proof = body2.sprite.alpha;
-    //saveWorld.debug.text('Valor: ' + body2.sprite.alpha, 132, 132);
+    // Destruye al asteroide
     body2.sprite.destroy();
-    /*if(body2.sprite.alpha < -0.25 && body2.sprite.alpha > -0.5){
-        count += 1;
-    }*/
+    // Si el asteroide es golpeado suma el contador.
     count += 1;
 }
 
@@ -115,5 +114,11 @@ function update() {
 function render() {
     // Dibuja el texto
     saveWorld.debug.text('¡Destruye los asteroides! - Asteorides destruidos: ' + count, 32, 32);
-    //saveWorld.debug.text('Maricaaaa: '+ proof, 256, 256);
-}    
+} 
+
+/*function win() {
+    // body...
+    if(count == 10){
+        saveWorld.state.start('fin');
+    }
+}*/
