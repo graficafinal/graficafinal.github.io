@@ -3,14 +3,15 @@ var saveWorld = new Phaser.Game(850, 500, Phaser.AUTO, 'destruye', { preload: pr
 var ship;
 var sky;
 var cursors;
-
+var count = 0;
+var asteroid;
 // Precarga los archivos
 function preload() {
     saveWorld.load.image('stars', 'archivos/space-2.jpg');
     saveWorld.load.spritesheet('ship', 'archivos/humstar.png', 32, 32);
     saveWorld.load.image('asteroid', 'archivos/Asteroid.png');
-    saveWorld.load.image('sweet', 'archivos/spinObj_06.png');
 
+    //saveWorld.load.image('sweet', 'archivos/spinObj_06.png');
 }
 
 function create() {
@@ -30,10 +31,10 @@ function create() {
     var asteroids = saveWorld.add.group();
     asteroids.enableBody = true;
     asteroids.physicsBodyType = Phaser.Physics.P2JS;
-    // Recorre hasta 5 asteroides.
-    for (var i = 0; i < 5; i++)
+    // Crea hasta 10 asteroides.
+    for (var i = 0; i < 10; i++)
     {
-        var asteroid = asteroids.create(saveWorld.world.randomX, saveWorld.world.randomY, 'asteroid');
+        asteroid = asteroids.create(saveWorld.world.randomX, saveWorld.world.randomY, 'asteroid');
         asteroid.body.setRectangle(40, 40);
         //  Cada asteroide se estrellará con los otros, por eso se colocan en el grupo de colisiones
         asteroid.body.setCollisionGroup(asteroidCollisionGroup);
@@ -62,10 +63,19 @@ function create() {
 
 }
 
+//var proof;
 // Esta funcion es llamada por ship y esto le permite golpear al asteroide
 // Se resta -0.05 para debilitarlo
 function hitasteroid(body1, body2) {
-    body2.sprite.alpha -= 0.05;
+    //body2.sprite.alpha -= 0.9;
+    // Si el asteroide es golpeado suma el contador.
+    //proof = body2.sprite.alpha;
+    //saveWorld.debug.text('Valor: ' + body2.sprite.alpha, 132, 132);
+    body2.sprite.destroy();
+    /*if(body2.sprite.alpha < -0.25 && body2.sprite.alpha > -0.5){
+        count += 1;
+    }*/
+    count += 1;
 }
 
 function update() {
@@ -104,5 +114,6 @@ function update() {
 
 function render() {
     // Dibuja el texto
-    saveWorld.debug.text('¡Destruye los asteroides!', 32, 32);
+    saveWorld.debug.text('¡Destruye los asteroides! - Asteorides destruidos: ' + count, 32, 32);
+    //saveWorld.debug.text('Maricaaaa: '+ proof, 256, 256);
 }    
