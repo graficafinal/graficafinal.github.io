@@ -18,6 +18,10 @@ var winState = {
         wkey.onDown.addOnce(this.start, this);
     },
     
+    update: function() {
+        count = 0;
+        // body...
+    },
     // The restart function calls the menu state    
     start: function () {
         saveWorld.state.start('juego');    

@@ -14,8 +14,6 @@ var iniciar = {
         saveWorld.load.image('stars', 'archivos/space-2.jpg');
         saveWorld.load.spritesheet('ship', 'archivos/humstar.png', 32, 32);
         saveWorld.load.image('asteroid', 'archivos/Asteroid.png');
-
-        //saveWorld.load.image('sweet', 'archivos/spinObj_06.png');
     },
 
     create: function() {
