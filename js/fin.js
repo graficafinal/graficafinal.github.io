@@ -1,28 +1,28 @@
+// Estado final.
+
 var winState = {
 
-    create: function() {	
-		
-	var winLabel = saveWorld.add.text(80, 80, 'Salvaste el mundo!',
-								{font: '50px Verdana', fill: '#00FF00' });
+    preload: function(){
+         saveWorld.load.image('findeljuego', 'archivos/fin.png');
+    },
 
-		// We give the player instructions on how to restart the saveWorld
-	var startLabel = saveWorld.add.text(80, saveWorld.world.height-80,
-								   'Presione R para reiniciar',
-								   {font: '25px Arial', fill: '#ffffff' });
+    create: function () {
+        // Agregar fondo
+        saveWorld.add.sprite(0, 0, 'findeljuego');
 
-        // We define the wkey as Phaser.Keyboard.W so that we can act
-        // when the player presses it
-        var wkey = saveWorld.input.keyboard.addKey(Phaser.Keyboard.R);
+        // teclaPresionada guarda la acción de presionar R para reanudar el juego
+        var teclaPresionada = saveWorld.input.keyboard.addKey(Phaser.Keyboard.R);
         
-        // When the player presses the W key, we call the restart function
-        wkey.onDown.addOnce(this.start, this);
+        // Cuando presiona se cambia a esa acción
+        teclaPresionada.onDown.addOnce(this.start, this);
     },
     
     update: function() {
         count = 0;
         // body...
     },
-    // The restart function calls the menu state    
+
+    // reinicia el juego   
     start: function () {
         saveWorld.state.start('juego');    
     }	

@@ -47,17 +47,28 @@ y los javascript -->
       </nav>
     </div>
 
-    <!-- Begin page content -->
+    <!-- Se hace una descripción de lo realizado -->
     <div class="container">
       <div class="page-header m-t-1">
 
         <h2>¡Destruye los asteroides y salva el mundo!</h2>
-
-        <p>El mundo está en peligro. Un montón de asteroides amenazan la vida en la tierra. Debes defenderla a toda costa.
-        Con tan solo acercar la nave puedes destruirlos.</p>
+        <br>
+        <h3>Idea</h3>
+        <p>El mundo está en peligro. Un montón de asteroides amenazan la vida en la tierra. El usuario debe defenderla a toda costa. Con tan solo acercar la nave puede destruirlos. La nave es manejada a voluntad del usuario, con las teclas que muestra la imagen, presentes en el teclado. Al final se muestra un mensaje sobre el cuidado del planeta.</p>
 
         <img align ="center" src="archivos/tip-up-down-keys.png" alt="Mountain View" style="width:250px;height:auto;">
+        <br>
+        <br>
+        <h3>Explicación</h3>
+        <p>Esta animación muestra como Phaser, una libreria realizada en Javascript, puede ayudarnos a crear juegos de forma simple, con un conocimiento en dicho lenguaje -tal y como fue visto en el curso-, y su integración con HTML.</p>
 
+        <p>La colisión de la nave hámster se observa cuando choca con un asteroide. Este último fue creado como un conjunto, llamado en Phaser "group", que hace que cada elemento de ese conjunto, el cual son copias, tenga el mismo comportamiento. Cada vez que la nave se acerca el asteroide es destruido, y todos los asteroides se comportan de igual forma. Incluso, aparecen en diferentes posiciones, ya que se definió su aparición de forma aleatoria en el escenario.</p>
+
+        <p>Tanto los asteroides como la nave manejan detectores de colisiones, que les permite no salirse de la pantalla (del mundo que hemos creado). Los detectores de colisiones también permitieron destruir los asteroides cuando "chocaba" con la nave. Se definió en el código que cada vez que eso pasará destruyera esa figura del escenario.</p>
+
+        <p>Al final muestra un mensaje que es también un cambio de estado. Los cambios de estados estan definidos en la carpeta js. Aquí init.js muestra los estados que tiene la animación: juego.js y fin.js. El primero tiene las colisiones mencionadas. Cuando destruye todos los asteroides cambia al siguiente estado: fin.js, que contiene el mensaje final. El resto de librerias presentes son necesarias para Phaser (y proporcionadas por ellos), por tal motivo no están comentadas.</p>
+
+        <p>Finalmente, el juego se puede ver en linea, dando clic <a href="http://graficafinal.github.io">aquí</a>. La razón es porque de forma local Chrome no corre bien Phaser por problemas con el manejo de archivos que hace esta libreria. Firefox si lo hace, y es excelente para probarla. Por eso se decidió montarlo en Github, que permite hacerlo de forma gratuita. </p>
       </div>
       
     </div>
